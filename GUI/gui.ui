@@ -1056,7 +1056,7 @@
               <item>
                <widget class="QLabel" name="label_14">
                 <property name="text">
-                 <string>Developed by Benjamin Griffiths</string>
+                 <string>Developed by Kowalski &amp; Skipper</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignBottom|Qt::AlignHCenter</set>

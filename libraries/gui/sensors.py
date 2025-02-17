@@ -315,7 +315,7 @@ class SENSORS(QObject):
         """
         pass
 
-    def updateSensorReadings(self, readings):
+    def updateSensorReadings(self, readings): # !Important
         """
         PURPOSE
 
@@ -323,28 +323,28 @@ class SENSORS(QObject):
 
         INPUT
 
-        - readings = an array containing the sensor readings.
+        - readings = an array containing the sensor readings. # !Important
 
         RETURNS
 
         NONE
         """
-        quantity = self.controlForm.rowCount()
+        quantity = self.controlForm.rowCount() # Number of sensors
 
         # UPDATE EACH SENSOR LABEL
-        for i, reading in enumerate(readings):
+        for i, reading in enumerate(readings): # i = sensor index, reading = sensor reading => readings = [sensor1_reading, sensor2_reading, ...]
 
             if i <= self.quantity:
                 try:
                     # ADD READINGS TO HISTORY
-                    self.data[i].append(float(reading))
+                    self.data[i].append(float(reading)) # Add sensor reading to history by appending it to the list of sensor readings
                     
                     # IF HISTORY IS FULL, REMOVE FIRST DATA POINT
-                    if len(self.data[i]) > self.dataPoints:
+                    if len(self.data[i]) > self.dataPoints: # What is i for ? => i = sensor index and we get the sensor readings from the readings array
                         
                         self.data[i].pop(0)
 
-                    if i <= quantity:
+                    if i <= quantity: # if sensor index is less than the number of sensors then update the sensor reading display
 
                         # TEXT BOX DISPLAY
                         if self.viewType == 0:
@@ -356,7 +356,7 @@ class SENSORS(QObject):
                 except:
                     pass
 
-    def updateSensorTextBox(self, sensor, reading):
+    def updateSensorTextBox(self, sensor, reading): # !Important
         """
         PURPOSE
 
@@ -373,12 +373,12 @@ class SENSORS(QObject):
         """
         # FIND LABEL WIDGET FOR EACH SENSOR
         try:
-            labelObject = self.controlForm.itemAt((2 * sensor) + 1).widget()
+            labelObject = self.controlForm.itemAt((2 * sensor) + 1).widget() # !Important => 
             labelObject.setText(str(reading))
         except:
             pass
 
-    def updateSensorGraph(self, sensor, reading):
+    def updateSensorGraph(self, sensor, reading): # !Important
         """
         PURPOSE
 
@@ -406,7 +406,7 @@ class SENSORS(QObject):
         except:
             pass
         
-    def updateControlLabels(self):
+    def updateControlLabels(self): # !Important
         """
         PURPOSE
 
@@ -450,7 +450,7 @@ class SENSORS(QObject):
                 except:
                     pass
 
-    def toggleDisplay(self):
+    def toggleDisplay(self): # TODO
         """
         PURPOSE
 
@@ -469,7 +469,7 @@ class SENSORS(QObject):
     #########################
     ### CONFIGURATION TAB ###
     #########################
-    def setupConfigLayout(self):
+    def setupConfigLayout(self): # !Important
         """
         PURPOSE
 
@@ -518,7 +518,7 @@ class SENSORS(QObject):
         # ADD TO GUI
         self.configLayout.setLayout(parentLayout)
     
-    def changeSensorsNumber(self):
+    def changeSensorsNumber(self): # !Important
         """
         PURPOSE
 
@@ -577,7 +577,7 @@ class SENSORS(QObject):
 
         print(self.seriesObjects)
            
-    def addConfigSensor(self):
+    def addConfigSensor(self): # !Important
         """
         PURPOSE
 

@@ -82,6 +82,7 @@ class UI(QMainWindow):
     Contains functions to initiate the GUI, link the widgets and connect 
     all the signals/slots from external libraries together.
     """
+    # !Important
     # DATABASE
     fileName = ""
     cameraFeeds = []
@@ -144,7 +145,7 @@ class UI(QMainWindow):
         # LAUNCH PILOT PROFILE SELECTOR
         self.profileSelector.showPopup()    
 
-    def initiateObjects(self):
+    def initiateObjects(self): # !Important
         """
         PURPOSE
 
@@ -162,10 +163,10 @@ class UI(QMainWindow):
         self.profileSelector = PROFILE_SELECTOR()
 
         # INITIATE SERIAL COMMUNICATION LIBRARY
-        self.comms = ROV_SERIAL()
+        self.comms = ROV_SERIAL() # ! Very Important
 
         # INITIATE XBOX CONTROLLER LIBRARY
-        self.controller = CONTROLLER()
+        self.controller = CONTROLLER() # ! Very Important
 
         self.control = CONTROL_PANEL(self, self.controller, self.comms)
         self.config = CONFIG(self, self.control, self.controller, self.comms)
@@ -177,37 +178,37 @@ class UI(QMainWindow):
         self.animation.setDirection(Qt.Vertical)
 
         # INITIATE CAMERA FEED LIBRARY
-        self.initiateCameraFeed()
+        self.initiateCameraFeed() # ! Very Important
 
         # STYLESHEET LIBRARY AND STYLING FUNCTIONS
         self.style = STYLE()
 
         # INITIATE VISION TASKS
-        self.control.initialiseVisionWidgets()
+        self.control.initialiseVisionWidgets() # ! Important => Computer Vision
 
         # INITIATE TIMER
         self.timer = TIMER(controlLayout = self.timer_control)
 
         # INITIATE THRUSTERS
-        self.thrusters = THRUSTERS(controlLayout = self.orientation_control, configLayout = self.thruster_config)
+        self.thrusters = THRUSTERS(controlLayout = self.orientation_control, configLayout = self.thruster_config) # ! Very Important => Thrusters
 
         # INITIATE ACTUATORS
-        self.actuators = ACTUATORS(controlLayout = self.actuator_control, configLayout = self.actuator_config)
+        self.actuators = ACTUATORS(controlLayout = self.actuator_control, configLayout = self.actuator_config) # ! Very Important => Actuators
 
         # INITIATE ANALOG CAMERAS
-        self.analogCameras = ANALOG_CAMERAS(controlLayout = self.analog_camera_control, configLayout = self.analog_camera_config)
+        self.analogCameras = ANALOG_CAMERAS(controlLayout = self.analog_camera_control, configLayout = self.analog_camera_config) # ! Very Important => Analog Cameras
 
         # INITIATE DIGITAL CAMERAS
-        self.digitalCameras = DIGITAL_CAMERAS(controlLayout = self.digital_camera_control, configLayout = self.digital_camera_config)
+        self.digitalCameras = DIGITAL_CAMERAS(controlLayout = self.digital_camera_control, configLayout = self.digital_camera_config) # ! Very Important => Digital Cameras
 
         # INITIATE KEYBINDINGS
         self.keybindings = KEYBINDINGS(configLayout = self.keybinding_config)
 
         # INITIATE CONTROLLER INPUT DISPLAY
-        self.controllerDisplay = CONTROLLER_DISPLAY(configLayout = self.controller_display_config, controlLayout = self.controller_control)
+        self.controllerDisplay = CONTROLLER_DISPLAY(configLayout = self.controller_display_config, controlLayout = self.controller_control) # ! Very Important => Controller Display
 
         # INITIATE SENSORS
-        self.sensors = SENSORS(controlLayout = self.sensor_control, configLayout = self.sensor_config)
+        self.sensors = SENSORS(controlLayout = self.sensor_control, configLayout = self.sensor_config) # ! Very Important => Sensors
 
     def connectSignals(self):
         """
@@ -223,7 +224,8 @@ class UI(QMainWindow):
 
         NONE
         """
-        # PILOT PROFILE SELECTED SIGNAL
+        # !Important
+        # PILOT PROFILE SELECTED SIGNAL 
         self.profileSelector.loadProfileSignal.connect(self.pilotProfileSelected)
         self.profileSelector.saveProfileSignal.connect(self.addNewProfile)
 
@@ -260,6 +262,7 @@ class UI(QMainWindow):
     ###############################
     ### CONFIGURATION FUNCTIONS ###
     ###############################
+    # ! Very Important
     @pyqtSlot(str)
     def pilotProfileSelected(self, directory):
         """
@@ -336,6 +339,7 @@ class UI(QMainWindow):
 
         NONE
         """
+        # ! Important
         # PARSE CONFIGURATION FILE
         configFile = READ_CONFIG_FILE(self.fileName)
         configFileStatus = configFile.parseFile()
@@ -540,6 +544,7 @@ class UI(QMainWindow):
     ################################
     ### WIDGET LINKING FUNCTIONS ###
     ################################
+    # ! Very Very Very Important
     def linkControlPanelWidgets(self):
         """
         PURPOSE
@@ -555,6 +560,7 @@ class UI(QMainWindow):
         NONE
         """
         # GO TO CONTROL PANEL TAB BUTTON
+        #                       signal                  Slot 
         self.change_gui_control.clicked.connect(lambda state, view = 0: self.changeView(view))
         self.change_gui_control.setChecked(True)
         self.style.applyGlow(self.change_gui_control, "#0D47A1", 10)
@@ -567,7 +573,7 @@ class UI(QMainWindow):
         self.control_panel_splitter.splitterMoved.connect(self.splitterEvent)
 
         # ROV CONNECT BUTTON
-        self.control_rov_connect.clicked.connect(self.control.rovSerialConnection)
+        self.control_rov_connect.clicked.connect(self.control.rovSerialConnection) # ! Very Very Important (self.control)
         self.control_rov_connect.setObjectName("large-button")
         self.style.applyGlow(self.control_rov_connect, "#0D47A1", 10)
         #self.control_rov_connect.setFixedHeight(int(self.control_rov_connect.sizeHint().height() * 1.5))
@@ -578,13 +584,18 @@ class UI(QMainWindow):
         self.style.applyGlow(self.control_controller_connect, "#0D47A1", 10)
         #self.control_controller_connect.setFixedHeight(int(self.control_controller_connect.sizeHint().height() * 1.5))
         
-        # MACHINE VISION TASK BUTTONS
+        # MACHINE VISION TASK BUTTONS #! Important
         self.control_vision_mosaic.clicked.connect(lambda status, task = 0: self.control.popupVisionTask(task)) 
         self.control_vision_shape_detection.clicked.connect(lambda status, task = 1: self.control.popupVisionTask(task))
         self.control_vision_transect_line.clicked.connect(lambda status, task = 2: self.control.popupVisionTask(task))
         self.control_vision_coral_health.clicked.connect(lambda status, task = 3: self.control.popupVisionTask(task))
    
         # LINK EACH DIGITAL CAMERA DROP DOWN MENU TO THE SAME SLOT, PASSING CAMERA ID AS 1,2,3,4 ETC.
+        """
+        When a user selects an option from camera_feed_1_menu, it calls changeCameraFeedMenu(index, 0), where 0 represents Camera 1.
+        Similarly, selecting from camera_feed_2_menu calls changeCameraFeedMenu(index, 1), where 1 represents Camera 2.
+        This pattern repeats for camera_feed_3_menu and camera_feed_4_menu, assigning cameras 2 and 3, respectively.
+        The lambda function ensures each menu controls a specific camera, passing the selected index and the camera ID.  """
         self.camera_feed_1_menu.activated.connect(lambda index, camera = 0: self.changeCameraFeedMenu(index, camera))
         self.camera_feed_2_menu.activated.connect(lambda index, camera = 1: self.changeCameraFeedMenu(index, camera))
         self.camera_feed_3_menu.activated.connect(lambda index, camera = 2: self.changeCameraFeedMenu(index, camera))
@@ -638,7 +649,7 @@ class UI(QMainWindow):
             
         # SERIAL COMMUNICATION BUTTONS
         self.config_com_port_list.activated.connect(self.config.changeComPort)
-        self.config_find_com_ports.clicked.connect(self.config.refreshComPorts)   
+        self.config_find_com_ports.clicked.connect(self.config.refreshComPorts)
 
     def linkToolbarWidgets(self):
         """
@@ -689,7 +700,7 @@ class UI(QMainWindow):
         feedQuantity = len(self.cameraFeeds)
         
         for i in range(feedQuantity):
-            cameraThread = CAMERA_CAPTURE(identifier = i)
+            cameraThread = CAMERA_CAPTURE(identifier = i) # ! Important => Camera Capture
             
             # CONNECT SIGNAL TO SLOT
             cameraThread.cameraNewFrameSignal.connect(self.updateCameraFeed)
@@ -700,7 +711,7 @@ class UI(QMainWindow):
             # START THREAD
             cameraThread.start()
 
-    @pyqtSlot()
+    @pyqtSlot() # An Annotation to indicate that the function is a slot
     def updateCameraMenus(self):
         """
         PURPOSE
@@ -754,8 +765,6 @@ class UI(QMainWindow):
         
         INPUT
 
-        NONE
-
         - camera = the camera feed being changed.
         - addess = the new source address.
 
@@ -765,7 +774,7 @@ class UI(QMainWindow):
         """
         # FORMAT ADDRESS
         formattedAddress = self.digitalCameras.addressConverter(address)
-
+        # ! Important
         # CHECK IF THIS ADDRESS IS ALREADY IN USE
         for i, cameraThread in enumerate(self.cameraThreadList):
             address = cameraThread.address
@@ -816,6 +825,7 @@ class UI(QMainWindow):
         NONE
         """
         # RESIZE PIXMAP
+        # ! Important
         pixmap = frame.scaled(self.cameraFeeds[identifier].size().width(), self.cameraFeeds[identifier].size().height(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
         
         # PAINT PIXMAP ONTO LABEL
@@ -845,7 +855,7 @@ class UI(QMainWindow):
         
         # UPDATE MENUS
         self.updateCameraMenus()
-
+    # ! Very Important
     def changeCameraFeedMenu(self, index, cameraFeed):
         """
         PURPOSE
@@ -939,7 +949,7 @@ class UI(QMainWindow):
         """
         PURPOSE
 
-        Loads the Avalon logo for either the light or dark theme.
+        Loads the Penguins logo for either the light or dark theme.
 
         INPUT
 
@@ -964,7 +974,7 @@ class UI(QMainWindow):
             self.avalon_logo.setPixmap(avalonPixmap)
 
     ###########################
-    #### SCALING FUNCTIONS ####
+    #### !SCALING FUNCTIONS ####
     ###########################
     def setupDefaultScaling(self):
         """
@@ -1064,7 +1074,7 @@ class UI(QMainWindow):
         NONE
         """
         self.changePixmapSize()
-        
+    # ! Important
     def changePixmapSize(self): 
         """
         PURPOSE
@@ -1262,7 +1272,7 @@ class UI(QMainWindow):
         INPUT
 
         - view = the page to transition to. (0 = Control Panel) (1 = Configuration). 
-                 If not set, program will switch away from current view.
+                If not set, program will switch away from current view.
 
         RETURNS
 
@@ -1408,6 +1418,7 @@ class CONTROL_PANEL():
     ############################
     ##### SERIAL FUNCTIONS #####
     ############################
+    # ! Important
     def rovSerialConnection(self, buttonState):
         """
         PURPOSE
@@ -1429,7 +1440,9 @@ class CONTROL_PANEL():
         # DISCONNECT
         else:
             self.rovDisconnect()
-
+            
+    
+    # ! Very Important
     def rovConnect(self):
         """
         PURPOSE
@@ -1454,6 +1467,7 @@ class CONTROL_PANEL():
         if self.ui.config_auto_connect.isChecked():
             # FIND ALL AVAILABLE COM PORTS
             self.ui.printTerminal('Searching for available COM ports...')
+            # ! Very Very Very Very Important
             availableComPorts, rovComPort, identity = self.comms.findComPorts(self.ui.config_com_port_list, 115200, self.comms.rovID)
             self.comms.rovComPort = rovComPort
             self.ui.printTerminal("{} available COM ports found.".format(len(availableComPorts)))
@@ -1529,8 +1543,9 @@ class CONTROL_PANEL():
         self.ui.printTerminal(message)
 
     ############################
-    ### CONTROLLER FUNCTIONS ###
+    ### !CONTROLLER FUNCTIONS ###
     ############################
+    # ** @ahmedelsherbiny0
     def controllerConnection(self, buttonState):
         """
         PURPOSE
@@ -1557,7 +1572,7 @@ class CONTROL_PANEL():
         """
         PURPOSE
 
-        Initialises communication with the XBOX controller.
+        Initialises communication with the PS4 controller. 
 
         INPUT
 
@@ -1638,7 +1653,7 @@ class CONTROL_PANEL():
         
         self.processButtons(buttonStates)
         self.processJoysticks(joystickValues)
-
+    # ! Very Important
     def processButtons(self, buttonStates):
         """
         PURPOSE
@@ -1648,7 +1663,7 @@ class CONTROL_PANEL():
 
         INPUT
 
-        - buttonStates = array containined the state of each button on the XBOX controller (1 or 0).
+        - buttonStates = array containined the state of each button on the PS4 controller (1 or 0).
 
         RETURNS
 
@@ -1683,7 +1698,7 @@ class CONTROL_PANEL():
 
                     # TO CALL FUNCTIONS UPON BUTTON RELEASE
                     self.callBindingFunction(whichControl, buttonState)
-
+    # ! Very Important
     def callBindingFunction(self, control, state):
         """
         PURPOSE
@@ -1764,7 +1779,7 @@ class CONTROL_PANEL():
         self.ui.thrusters.convertThrusterSpeeds(thrusterSpeeds)
 
     ###########################
-    ## ROV CONTROL FUNCTIONS ##
+    ## ! ROV CONTROL FUNCTIONS ##
     ###########################
     def changeActuators(self, actuatorStates):
         """
@@ -1822,7 +1837,7 @@ class CONTROL_PANEL():
 
         # START POLLING SENSORS VALUES
         self.getSensorReadings()
-
+    # ! Important
     def getSensorReadings(self):
         """
         PURPOSE
@@ -2018,6 +2033,8 @@ class CONTROL_PANEL():
         NONE
         """
         pass
+    
+# ! Very Important
 
 class CONFIG():
     """
@@ -2085,7 +2102,7 @@ class CONFIG():
 
         NONE
         """
-        availableComPorts, rovComPort, identity = self.comms.findComPorts(self.ui.config_com_port_list, 115200, 'AVALONROV')
+        availableComPorts, rovComPort, identity = self.comms.findComPorts(self.ui.config_com_port_list, 115200, 'PenguinsROV')
         self.ui.printTerminal("{} available COM ports found.".format(len(availableComPorts))) 
 
     def returnButtonStates(self):

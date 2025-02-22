@@ -27,8 +27,8 @@ class VIEW(QWidget):
         layout.addWidget(changeButton, 1, 0)
         self.setLayout(layout)
 
-        self.address1 = 0
-        self.address2 = "rtsp://192.168.0.100/user=admin&password=&channel=1&stream=0.sdp?"
+        self.address1 = 0 # LAPTOP CAMERA
+        self.address2 = "rtsp://192.168.0.100/user=admin&password=&channel=1&stream=0.sdp?" # IP CAMERA
 
         # INITIATE CAMERA
         self.camThread = CAMERA_CAPTURE()

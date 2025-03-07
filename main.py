@@ -190,13 +190,13 @@ class UI(QMainWindow):
         self.timer = TIMER(controlLayout = self.timer_control)
 
         # INITIATE THRUSTERS
-        self.thrusters = THRUSTERS(controlLayout = self.orientation_control, configLayout = self.thruster_config) # ! Very Important => Thrusters
+        # self.thrusters = THRUSTERS(controlLayout = self.orientation_control, configLayout = self.thruster_config) # ! Very Important => Thrusters
 
         # INITIATE ACTUATORS
-        self.actuators = ACTUATORS(controlLayout = self.actuator_control, configLayout = self.actuator_config) # ! Very Important => Actuators
+        # self.actuators = ACTUATORS(controlLayout = self.actuator_control, configLayout = self.actuator_config) # ! Very Important => Actuators
 
         # INITIATE ANALOG CAMERAS
-        self.analogCameras = ANALOG_CAMERAS(controlLayout = self.analog_camera_control, configLayout = self.analog_camera_config) # ! Very Important => Analog Cameras
+        # self.analogCameras = ANALOG_CAMERAS(controlLayout = self.analog_camera_control, configLayout = self.analog_camera_config) # ! Very Important => Analog Cameras
 
         # INITIATE DIGITAL CAMERAS
         self.digitalCameras = DIGITAL_CAMERAS(controlLayout = self.digital_camera_control, configLayout = self.digital_camera_config) # ! Very Important => Digital Cameras
@@ -245,13 +245,13 @@ class UI(QMainWindow):
         self.digitalCameras.cameraChangeAddress.connect(self.changeCameraAddress)
 
         # THRUSTER TEST/SET SPEED SIGNALS
-        self.thrusters.thrusterTestSignal.connect(self.control.changeThrusters)
-        self.thrusters.thrusterSpeedsSignal.connect(self.control.changeThrusters)
+        # self.thrusters.thrusterTestSignal.connect(self.control.changeThrusters)
+        # self.thrusters.thrusterSpeedsSignal.connect(self.control.changeThrusters)
 
-        # ADD/REMOVE/TOGGLE ACTUATOR SIGNALS
-        self.actuators.addKeybinding.connect(lambda label: self.keybindings.addBinding(label))
-        self.actuators.removeKeybinding.connect(self.keybindings.removeBinding)
-        self.actuators.toggleActuatorSignal.connect(self.control.changeActuators)
+        # # ADD/REMOVE/TOGGLE ACTUATOR SIGNALS
+        # self.actuators.addKeybinding.connect(lambda label: self.keybindings.addBinding(label))
+        # self.actuators.removeKeybinding.connect(self.keybindings.removeBinding)
+        # self.actuators.toggleActuatorSignal.connect(self.control.changeActuators)
 
         # CONTROLLER VALUES SIGNAL
         self.controller.processInputSignal.connect(self.control.processControllerInput)
@@ -351,13 +351,13 @@ class UI(QMainWindow):
             self.style.theme = configFile.readTheme()
             
             # READ THRUSTER SETTINGS
-            self.thrusters.rovPositions, self.thrusters.reverseStates = configFile.readThruster() 
+            # self.thrusters.rovPositions, self.thrusters.reverseStates = configFile.readThruster() 
             
             # READ ACTUATOR SETTINGS
-            self.actuators.quantity, self.actuators.labelList = configFile.readActuator()
+            # self.actuators.quantity, self.actuators.labelList = configFile.readActuator()
 
             # READ ANALOG CAMERA SETTINGS
-            self.analogCameras.quantity, self.analogCameras.labelList, self.analogCameras.defaultCameras = configFile.readAnalogCamera()
+            # self.analogCameras.quantity, self.analogCameras.labelList, self.analogCameras.defaultCameras = configFile.readAnalogCamera()
 
             # READ DIGITAL CAMERA SETTINGS
             self.digitalCameras.quantity, self.digitalCameras.labelList, self.digitalCameras.addressList, self.digitalCameras.defaultCameras, self.digitalCameras.selectedResolutions = configFile.readDigitalCamera()
@@ -393,13 +393,13 @@ class UI(QMainWindow):
         configFile.saveTheme(self.style.theme)
 
         # SAVE THRUSTER SETTINGS
-        configFile.saveThruster(self.thrusters.rovPositions, self.thrusters.reverseStates)
+        # configFile.saveThruster(self.thrusters.rovPositions, self.thrusters.reverseStates)
 
         # SAVE ACTUATOR SETTINGS
-        configFile.saveActuator(self.actuators.quantity, self.actuators.labelList)
+        # configFile.saveActuator(self.actuators.quantity, self.actuators.labelList)
 
         # SAVE ANALOG CAMERA SETTINGS
-        configFile.saveAnalogCamera(self.analogCameras.quantity, self.analogCameras.labelList, self.analogCameras.defaultCameras)
+        # configFile.saveAnalogCamera(self.analogCameras.quantity, self.analogCameras.labelList, self.analogCameras.defaultCameras)
 
         # SAVE DIGITAL CAMERA SETTINGS
         configFile.saveDigitalCamera(self.digitalCameras.quantity, self.digitalCameras.labelList, self.digitalCameras.addressList, self.digitalCameras.defaultCameras, self.digitalCameras.selectedResolutions)
@@ -483,16 +483,16 @@ class UI(QMainWindow):
         self.timer.setup()
 
         # SETUP THRUSTERS
-        self.thrusters.setup()
+        # self.thrusters.setup()
 
         # SETUP KEYBINDINGS
         self.keybindings.setup()
 
         # SETUP ACTUATORS
-        self.actuators.setup() 
+        # self.actuators.setup() 
          
         # SETUP ANALOG CAMERAS
-        self.analogCameras.setup()
+        # self.analogCameras.setup()
         
         # SETUP DIGITAL CAMERAS
         self.digitalCameras.setup()
@@ -521,16 +521,16 @@ class UI(QMainWindow):
         self.timer.reset()
 
         # RESET THRUSTER SETTINGS
-        self.thrusters.reset()
+        # self.thrusters.reset()
 
         # RESET ACTUATOR SETTINGS
-        self.actuators.reset()
+        # self.actuators.reset()
 
         # RESET SENSOR SETTINGS
         self.sensors.reset()
 
         # RESET ANALOG CAMERA SETTINGS
-        self.analogCameras.reset()
+        # self.analogCameras.reset()
 
         # RESET DIGITAL CAMERA SETTINGS
         self.digitalCameras.reset()
@@ -598,14 +598,14 @@ class UI(QMainWindow):
         The lambda function ensures each menu controls a specific camera, passing the selected index and the camera ID.  """
         self.camera_feed_1_menu.activated.connect(lambda index, camera = 0: self.changeCameraFeedMenu(index, camera))
         self.camera_feed_2_menu.activated.connect(lambda index, camera = 1: self.changeCameraFeedMenu(index, camera))
-        self.camera_feed_3_menu.activated.connect(lambda index, camera = 2: self.changeCameraFeedMenu(index, camera))
-        self.camera_feed_4_menu.activated.connect(lambda index, camera = 3: self.changeCameraFeedMenu(index, camera))
+        # self.camera_feed_3_menu.activated.connect(lambda index, camera = 2: self.changeCameraFeedMenu(index, camera))
+        # self.camera_feed_4_menu.activated.connect(lambda index, camera = 3: self.changeCameraFeedMenu(index, camera))
 
         # CAMERA FEED CLICK EVENT
         self.camera_feed_1.mousePressEvent = lambda event, cameraFeed = 0: self.changeCameraFeed(event, cameraFeed)
         self.camera_feed_2.mousePressEvent = lambda event, cameraFeed = 1: self.changeCameraFeed(event, cameraFeed)
-        self.camera_feed_3.mousePressEvent = lambda event, cameraFeed = 2: self.changeCameraFeed(event, cameraFeed)
-        self.camera_feed_4.mousePressEvent = lambda event, cameraFeed = 3: self.changeCameraFeed(event, cameraFeed)
+        # self.camera_feed_3.mousePressEvent = lambda event, cameraFeed = 2: self.changeCameraFeed(event, cameraFeed)
+        # self.camera_feed_4.mousePressEvent = lambda event, cameraFeed = 3: self.changeCameraFeed(event, cameraFeed)
 
         # SWITCH USER BUTTON
         self.switch_user.clicked.connect(lambda: self.profileSelector.showPopup())
@@ -619,7 +619,7 @@ class UI(QMainWindow):
         self.program_exit.setIconSize(QSize(15,15))
         self.program_exit.setObjectName("red-button")
 
-        self.mini_rov_activate.clicked.connect(lambda sensor = 0, reading = None: self.sensors.updateSensorGraph(sensor, reading))
+        # self.mini_rov_activate.clicked.connect(lambda sensor = 0, reading = None: self.sensors.updateSensorGraph(sensor, reading))
         
     def linkConfigWidgets(self):
         """
@@ -694,7 +694,7 @@ class UI(QMainWindow):
 
         NONE
         """
-        self.cameraFeeds = [self.camera_feed_1, self.camera_feed_2, self.camera_feed_3, self.camera_feed_4]
+        self.cameraFeeds = [self.camera_feed_1, self.camera_feed_2]
 
         # INITIATE CAMERA THREADS
         feedQuantity = len(self.cameraFeeds)
@@ -725,7 +725,7 @@ class UI(QMainWindow):
 
         RETURNS
         """
-        menuList = [self.camera_feed_1_menu, self.camera_feed_2_menu, self.camera_feed_3_menu, self.camera_feed_4_menu]
+        menuList = [self.camera_feed_1_menu, self.camera_feed_2_menu]
 
         for i, menu in enumerate(menuList):
             menu.clear()
@@ -749,11 +749,14 @@ class UI(QMainWindow):
 
         NONE
         """
-        if status:
-            self.cameraThreadList[feed].feedBegin()
-            self.cameraThreadList[feed].start()
-        else:
-            self.cameraThreadList[feed].feedStop()
+        if(feed >= 2):
+            pass
+        else :
+            if status:
+                self.cameraThreadList[feed].feedBegin()
+                self.cameraThreadList[feed].start()
+            else:
+                self.cameraThreadList[feed].feedStop()
 
     @pyqtSlot(int, str)
     def changeCameraAddress(self, camera, address):
@@ -784,7 +787,11 @@ class UI(QMainWindow):
                 cameraThread.changeSource("")
 
         # REINITIALISE CAMERA WITH NEW ADDRESS
-        self.cameraThreadList[camera].changeSource(formattedAddress)
+        print("Camera: ", camera)
+        if(camera >= 2):
+            pass
+        else:
+            self.cameraThreadList[camera].changeSource(formattedAddress)
  
     @pyqtSlot(int, int, int)
     def changeCameraResolution(self, camera, width, height):

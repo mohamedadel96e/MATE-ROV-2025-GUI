@@ -305,7 +305,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="0" column="1">
+                   <!-- <item row="0" column="1">
                     <layout class="QHBoxLayout" name="horizontalLayout_10">
                      <item>
                       <spacer name="horizontalSpacer_6">
@@ -348,8 +348,8 @@
                       </spacer>
                      </item>
                     </layout>
-                   </item>
-                   <item row="1" column="1">
+                   </item> -->
+                   <!-- <item row="1" column="1">
                     <widget class="QLabel" name="camera_feed_3">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
@@ -367,8 +367,8 @@
                       <set>Qt::AlignHCenter|Qt::AlignTop</set>
                      </property>
                     </widget>
-                   </item>
-                   <item row="0" column="2">
+                   </item> -->
+                   <!-- <item row="0" column="2">
                     <layout class="QHBoxLayout" name="horizontalLayout_12">
                      <item>
                       <spacer name="horizontalSpacer_10">
@@ -411,7 +411,7 @@
                       </spacer>
                      </item>
                     </layout>
-                   </item>
+                   </item> -->
                   </layout>
                  </item>
                 </layout>
@@ -448,16 +448,7 @@
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_12">
-                    <item row="3" column="0">
-                     <widget class="QGroupBox" name="analog_camera_control">
-                      <property name="title">
-                       <string>External Camera Feeds</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
+                    
                     <item row="1" column="0">
                      <widget class="QGroupBox" name="digital_camera_control">
                       <property name="title">
@@ -478,60 +469,156 @@
                       </property>
                      </widget>
                     </item>
-                    <item row="0" column="0">
-                     <widget class="QGroupBox" name="group_box_minirov">
-                      <property name="title">
-                       <string>Mini ROV</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                      <layout class="QGridLayout" name="gridLayout_3">
-                       <item row="0" column="0">
-                        <widget class="QPushButton" name="mini_rov_activate">
-                         <property name="text">
-                          <string>Activate</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="1" column="0">
-                        <widget class="QLabel" name="label_2">
-                         <property name="text">
-                          <string>Tether Length</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="0">
-                        <widget class="QProgressBar" name="progressBar">
-                         <property name="value">
-                          <number>24</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="3" column="0">
-                        <layout class="QHBoxLayout" name="horizontalLayout_6">
-                         <item>
-                          <widget class="QPushButton" name="pushButton_19">
-                           <property name="text">
-                            <string>Extend</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QPushButton" name="pushButton_24">
-                           <property name="text">
-                            <string>Retract</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
+                    <item>
+                   <widget class="QGroupBox" name="group_box_tasks">
+                    <property name="title">
+                     <string>Tasks</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <layout class="QGridLayout" name="gridLayout_18">
+                     <item row="3" column="1">
+                      <widget class="QPushButton" name="control_vision_coral_health">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Start</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="label_12">
+                       <property name="text">
+                        <string>Coral Reef Health</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="label_6">
+                       <property name="text">
+                        <string>Mosaic</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QPushButton" name="control_vision_shape_detection">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Start</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="label_7">
+                       <property name="text">
+                        <string>Shape Detection</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QPushButton" name="control_vision_transect_line">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Start</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QPushButton" name="control_vision_mosaic">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Start</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="label_13">
+                       <property name="text">
+                        <string>Transect Line</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="timer_control">
+                    <property name="title">
+                     <string>Competition Time</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
                     <item row="4" column="0">
                      <spacer name="verticalSpacer_2">
                       <property name="orientation">
@@ -839,16 +926,7 @@
                     </layout>
                    </widget>
                   </item>
-                  <item>
-                   <widget class="QGroupBox" name="actuator_control">
-                    <property name="title">
-                     <string>Actuators</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
+                
                   <item>
                    <widget class="QGroupBox" name="sensor_control">
                     <property name="title">
@@ -859,166 +937,8 @@
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <widget class="QGroupBox" name="group_box_tasks">
-                    <property name="title">
-                     <string>Tasks</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <layout class="QGridLayout" name="gridLayout_18">
-                     <item row="3" column="1">
-                      <widget class="QPushButton" name="control_vision_coral_health">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Start</string>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="3" column="0">
-                      <widget class="QLabel" name="label_12">
-                       <property name="text">
-                        <string>Coral Reef Health</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_6">
-                       <property name="text">
-                        <string>Mosaic</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="1">
-                      <widget class="QPushButton" name="control_vision_shape_detection">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Start</string>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="0">
-                      <widget class="QLabel" name="label_7">
-                       <property name="text">
-                        <string>Shape Detection</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="1">
-                      <widget class="QPushButton" name="control_vision_transect_line">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Start</string>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="1">
-                      <widget class="QPushButton" name="control_vision_mosaic">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Start</string>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="0">
-                      <widget class="QLabel" name="label_13">
-                       <property name="text">
-                        <string>Transect Line</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QGroupBox" name="orientation_control">
-                    <property name="title">
-                     <string>Control Orientation</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QGroupBox" name="timer_control">
-                    <property name="title">
-                     <string>Competition Time</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
+                  
+                  
                  </layout>
                 </item>
                 <item row="2" column="0">
@@ -1112,21 +1032,7 @@
               <property name="spacing">
                <number>15</number>
               </property>
-              <item row="1" column="2">
-               <widget class="QGroupBox" name="group_box_rov_visual">
-                <property name="title">
-                 <string>ROV Visualisation</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_31">
-                 <item row="0" column="0">
-                  <layout class="QGridLayout" name="config_simulation_graph"/>
-                 </item>
-                </layout>
-               </widget>
-              </item>
+              
               <item row="0" column="0">
                <widget class="QGroupBox" name="group_box_comms_config">
                 <property name="title">
@@ -1228,41 +1134,7 @@
                 </layout>
                </widget>
               </item>
-              <item row="0" column="4">
-               <widget class="QGroupBox" name="group_box_analog_camera_config">
-                <property name="title">
-                 <string>Analog Camera Configuration</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_13">
-                 <item row="0" column="0">
-                  <widget class="QScrollArea" name="scrollArea_5">
-                   <property name="frameShape">
-                    <enum>QFrame::NoFrame</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>0</number>
-                   </property>
-                   <property name="widgetResizable">
-                    <bool>true</bool>
-                   </property>
-                   <widget class="QWidget" name="analog_camera_config">
-                    <property name="geometry">
-                     <rect>
-                      <x>0</x>
-                      <y>0</y>
-                      <width>140</width>
-                      <height>334</height>
-                     </rect>
-                    </property>
-                   </widget>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
+              
               <item row="1" column="1">
                <widget class="QGroupBox" name="group_box_controller_config">
                 <property name="title">
@@ -1345,94 +1217,8 @@
                 </layout>
                </widget>
               </item>
-              <item row="0" column="2">
-               <widget class="QGroupBox" name="group_box_actuator_config">
-                <property name="title">
-                 <string>Actuator Configuration</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_22">
-                 <item row="0" column="0">
-                  <widget class="QScrollArea" name="config_actuator_scroll">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::NoFrame</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>0</number>
-                   </property>
-                   <property name="horizontalScrollBarPolicy">
-                    <enum>Qt::ScrollBarAlwaysOff</enum>
-                   </property>
-                   <property name="sizeAdjustPolicy">
-                    <enum>QAbstractScrollArea::AdjustToContents</enum>
-                   </property>
-                   <property name="widgetResizable">
-                    <bool>true</bool>
-                   </property>
-                   <widget class="QWidget" name="actuator_config">
-                    <property name="geometry">
-                     <rect>
-                      <x>0</x>
-                      <y>0</y>
-                      <width>109</width>
-                      <height>334</height>
-                     </rect>
-                    </property>
-                   </widget>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QGroupBox" name="group_box_thruster_config">
-                <property name="title">
-                 <string>Thruster Configuration</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_16">
-                 <item row="0" column="0">
-                  <widget class="QScrollArea" name="thruster_scroll">
-                   <property name="frameShape">
-                    <enum>QFrame::NoFrame</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>0</number>
-                   </property>
-                   <property name="horizontalScrollBarPolicy">
-                    <enum>Qt::ScrollBarAlwaysOff</enum>
-                   </property>
-                   <property name="sizeAdjustPolicy">
-                    <enum>QAbstractScrollArea::AdjustToContents</enum>
-                   </property>
-                   <property name="widgetResizable">
-                    <bool>true</bool>
-                   </property>
-                   <widget class="QWidget" name="thruster_config">
-                    <property name="geometry">
-                     <rect>
-                      <x>0</x>
-                      <y>0</y>
-                      <width>108</width>
-                      <height>334</height>
-                     </rect>
-                    </property>
-                   </widget>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
+              
+              
               <item row="1" column="3">
                <widget class="QGroupBox" name="group_box_sensor_config">
                 <property name="title">

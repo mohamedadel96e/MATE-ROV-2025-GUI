@@ -15,17 +15,17 @@ class DIGITAL_CAMERAS(QObject):
     cameraChangeAddress = pyqtSignal(int, str)
 
     # DATABASE
-    feedQuantity = 4
+    feedQuantity = 2
     quantity = 0 
     labelList = []
     addressList = []
-    defaultCameras = [0, 0, 0, 0]
+    defaultCameras = [0, 0]
     defaultMenus = []
-    selectedCameras = [0, 0, 0, 0]
+    selectedCameras = [0, 0]
     selectedMenus = []
     resolutions = [[1920, 1080], [1600, 900], [1280, 720], [1024, 576], [640, 360], [256, 144]]
     resolutionMenus = []
-    selectedResolutions = [4, 4, 4, 4]
+    selectedResolutions = [4, 4]
     feedStatus = []
 
     def __init__(self, *, controlLayout = None, configLayout = None):
@@ -229,7 +229,7 @@ class DIGITAL_CAMERAS(QObject):
         parentLayout.addRow(label1, label2)
 
         # PRIMARY AND SECONDARY CAMERA ICONS FOR EACH BUTTON
-        texts = ["1st", "2nd-1", "2nd-2", "2nd-3"]
+        texts = ["1st", "2nd-1"]
 
         for feed, text in enumerate(texts):
             # ENABLE/DISABLE BUTTON

@@ -13,7 +13,7 @@ class ROV_SERIAL(QObject):
     uiSerialFunction = pyqtSignal(str)
 
     # DATABASE
-    rovID = "AVALONROV"
+    rovID = "PenguinsROV"
     rovComPort = None
     comms = None
     commsStatus = False
